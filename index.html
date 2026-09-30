@@ -3,113 +3,558 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ambani Tool - Premium VIP Panel</title>
+<title>𝒁𝒆𝒕𝒂 𝑵𝒖𝒎𝒃𝒆𝒓 𝑯𝒂𝒄𝒌 — Premium VIP Panel</title>
+<meta name="description" content="Premium VIP tool for number intelligence. Free limited-time access.">
+<link rel="icon" href="logo.png" type="image/png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --green: #00ff88;
+    --green-dark: #00cc6a;
+    --bg-1: #0a0a0f;
+    --bg-2: #12121a;
+    --card: rgba(255,255,255,0.04);
+    --border: rgba(255,255,255,0.08);
+    --text: #ffffff;
+    --muted: #8b8b9a;
+  }
+  html { scroll-behavior: smooth; }
   body {
-    min-height: 100vh;
-    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-    color: #fff;
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-1);
+    color: var(--text);
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  /* Background glow */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(circle at 15% 10%, rgba(0,255,136,0.12), transparent 40%),
+      radial-gradient(circle at 85% 90%, rgba(100,0,255,0.12), transparent 40%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1; }
+
+  /* ============ NAVBAR ============ */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 16px 0;
+    background: rgba(10,10,15,0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
     display: flex;
-    justify-content: center;
     align-items: center;
-    padding: 20px;
+    justify-content: space-between;
   }
-  .card {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 20px;
-    padding: 30px 25px;
-    max-width: 400px;
-    width: 100%;
-    text-align: center;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-  }
-  .badge {
-    display: inline-block;
-    background: #00ff88;
-    color: #000;
-    font-size: 12px;
-    font-weight: bold;
-    padding: 5px 12px;
-    border-radius: 20px;
-    margin-bottom: 15px;
-  }
-  h1 { font-size: 26px; margin-bottom: 5px; letter-spacing: 1px; }
-  .subtitle { color: #00ff88; font-size: 13px; letter-spacing: 2px; margin-bottom: 25px; }
-  .price-old { text-decoration: line-through; color: #888; font-size: 16px; }
-  .price-new { font-size: 42px; font-weight: bold; color: #00ff88; margin: 5px 0 15px; }
-  .timer {
-    background: rgba(255,0,0,0.15);
-    border: 1px solid rgba(255,0,0,0.4);
-    border-radius: 10px;
-    padding: 12px;
-    margin-bottom: 20px;
-    font-size: 13px;
-    color: #ff6b6b;
-  }
-  .timer span { font-size: 22px; font-weight: bold; display: block; margin-top: 5px; }
-  .features {
+  .nav-logo {
     display: flex;
-    justify-content: space-around;
-    margin: 20px 0;
-    font-size: 11px;
-    color: #aaa;
-  }
-  .features div { flex: 1; }
-  .features div::before {
-    content: "●";
-    display: block;
-    color: #00ff88;
+    align-items: center;
+    gap: 10px;
+    font-weight: 800;
     font-size: 18px;
-    margin-bottom: 5px;
+    letter-spacing: 0.5px;
   }
-  .btn {
-    display: block;
-    width: 100%;
-    padding: 16px;
-    background: linear-gradient(90deg, #00ff88, #00cc6a);
+  .nav-logo img {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: 0 0 20px rgba(0,255,136,0.3);
+  }
+  .nav-logo span { background: linear-gradient(90deg, #fff, var(--green)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--green); }
+  .nav-cta {
+    background: var(--green);
     color: #000;
-    font-size: 16px;
-    font-weight: bold;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
     text-decoration: none;
     transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,255,136,0.4); }
+
+  /* ============ HERO ============ */
+  .hero {
+    padding: 80px 0 60px;
+    text-align: center;
+  }
+  .hero-logo {
+    width: 90px;
+    height: 90px;
+    border-radius: 24px;
+    object-fit: cover;
+    margin-bottom: 24px;
+    box-shadow: 0 0 60px rgba(0,255,136,0.4), 0 0 0 1px rgba(0,255,136,0.2);
+    animation: float 4s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0,255,136,0.1);
+    border: 1px solid rgba(0,255,136,0.3);
+    color: var(--green);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 100px;
+    margin-bottom: 24px;
+    letter-spacing: 1px;
+  }
+  .hero-badge::before {
+    content: '';
+    width: 8px; height: 8px;
+    background: var(--green);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--green);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  .hero h1 {
+    font-size: clamp(36px, 7vw, 68px);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    margin-bottom: 20px;
+  }
+  .hero h1 span {
+    background: linear-gradient(90deg, var(--green), #00ccff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .hero p {
+    color: var(--muted);
+    font-size: clamp(15px, 2vw, 18px);
+    max-width: 600px;
+    margin: 0 auto 36px;
+  }
+
+  /* Price block */
+  .price-block {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 16px 28px;
+    margin-bottom: 32px;
+    backdrop-filter: blur(10px);
+  }
+  .price-old {
+    color: var(--muted);
+    text-decoration: line-through;
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .price-new {
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--green);
+  }
+  .price-tag {
+    background: linear-gradient(90deg, #ff3d3d, #ff7700);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 6px;
+    letter-spacing: 0.5px;
+  }
+
+  /* Buttons */
+  .hero-buttons {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 18px 36px;
+    border-radius: 14px;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    font-family: inherit;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--green), var(--green-dark));
+    color: #000;
+    box-shadow: 0 10px 30px rgba(0,255,136,0.3);
+  }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(0,255,136,0.5); }
+  .btn-secondary {
+    background: var(--card);
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+  .btn-secondary:hover { background: rgba(255,255,255,0.08); }
+
+  /* Timer */
+  .timer {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255,61,61,0.1);
+    border: 1px solid rgba(255,61,61,0.3);
+    color: #ff6b6b;
+    padding: 10px 20px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 600;
     margin-top: 10px;
   }
-  .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0,255,136,0.4); }
-  .small { font-size: 11px; color: #777; margin-top: 15px; }
+  .timer strong { font-size: 18px; color: #fff; }
+
+  /* ============ STATS BAR ============ */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+    margin: 60px 0;
+    border: 1px solid var(--border);
+  }
+  .stat {
+    background: var(--bg-2);
+    padding: 28px 20px;
+    text-align: center;
+  }
+  .stat-num {
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--green);
+    margin-bottom: 4px;
+  }
+  .stat-label {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* ============ SECTION HEADERS ============ */
+  .section { padding: 60px 0; }
+  .section-head { text-align: center; margin-bottom: 48px; }
+  .section-head h2 {
+    font-size: clamp(26px, 4vw, 42px);
+    font-weight: 900;
+    letter-spacing: -1px;
+    margin-bottom: 12px;
+  }
+  .section-head h2 span {
+    background: linear-gradient(90deg, var(--green), #00ccff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .section-head p {
+    color: var(--muted);
+    max-width: 560px;
+    margin: 0 auto;
+    font-size: 15px;
+  }
+
+  /* ============ BANNERS GRID ============ */
+  .banners-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  .banner-card {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--card);
+    aspect-ratio: 16 / 9;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .banner-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(0,255,136,0.15);
+  }
+  .banner-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .banner-label {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(10px);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 100px;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  /* ============ FEATURES ============ */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+  .feature {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 28px;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+  .feature:hover { transform: translateY(-4px); border-color: rgba(0,255,136,0.3); }
+  .feature-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(0,255,136,0.2), rgba(0,204,255,0.1));
+    border: 1px solid rgba(0,255,136,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin-bottom: 16px;
+  }
+  .feature h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+  .feature p { color: var(--muted); font-size: 14px; }
+
+  /* ============ FINAL CTA ============ */
+  .final-cta {
+    background: linear-gradient(135deg, rgba(0,255,136,0.08), rgba(100,0,255,0.08));
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    padding: 60px 30px;
+    text-align: center;
+    margin: 40px 0 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .final-cta::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0,255,136,0.15), transparent 60%);
+    animation: rotate 20s linear infinite;
+  }
+  @keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  .final-cta > * { position: relative; z-index: 1; }
+  .final-cta h2 {
+    font-size: clamp(24px, 4vw, 40px);
+    font-weight: 900;
+    margin-bottom: 16px;
+    letter-spacing: -1px;
+  }
+  .final-cta p { color: var(--muted); margin-bottom: 30px; max-width: 500px; margin-left: auto; margin-right: auto; }
+
+  /* ============ FOOTER ============ */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 30px 0;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  footer a { color: var(--green); text-decoration: none; }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 700px) {
+    .nav-links { display: none; }
+    .nav-cta { padding: 8px 16px; font-size: 13px; }
+    .hero { padding: 50px 0 40px; }
+    .hero-logo { width: 72px; height: 72px; border-radius: 20px; }
+    .price-block { padding: 12px 20px; gap: 12px; }
+    .price-new { font-size: 26px; }
+    .btn { padding: 16px 28px; font-size: 15px; }
+    .btn { width: 100%; }
+    .section { padding: 40px 0; }
+    .final-cta { padding: 40px 20px; margin: 30px 0 60px; }
+  }
 </style>
 </head>
 <body>
-  <div class="card">
-    <div class="badge">LIVE ACCESS AVAILABLE</div>
-    <h1>ZETA NUMBER PANEL</h1>
-    <div class="subtitle">PREMIUM VIP PANEL</div>
 
-    <div class="price-old">Regular Price ₹2999</div>
-    <div style="font-size:12px; color:#ff6b6b;">LIMITED TIME OFFER</div>
-    <div class="price-new">₹0</div>
+<!-- ============ NAVBAR ============ -->
+<nav>
+  <div class="container nav-inner">
+    <div class="nav-logo">
+      <img src="logo.png" alt="Zeta Number Logo">
+      <span>ZETA NUMBER</span>
+    </div>
+    <div class="nav-links">
+      <a href="#banners">Gallery</a>
+      <a href="#features">Features</a>
+      <a href="#download">Download</a>
+    </div>
+    <a href="#download" class="nav-cta">Get Free</a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="container">
+    <img src="logo.png" alt="Zeta Number" class="hero-logo">
+    <div class="hero-badge">LIVE ACCESS AVAILABLE</div>
+    <h1>Premium <span>VIP Panel</span><br>Now Free</h1>
+    <p>Get instant access to the Zeta Number premium toolkit. Limited-time free access — no payment required.</p>
+
+    <div class="price-block">
+      <span class="price-old">₹1999</span>
+      <span class="price-new">₹0</span>
+      <span class="price-tag">FREE</span>
+    </div>
+
+    <div class="hero-buttons">
+      <a href="https://github.com/recovery20013-hub/zetagamer/releases/download/v1.0/zeta-number.apk"
+         class="btn btn-primary" id="downloadBtn">
+        ⬇ Download APK
+      </a>
+      <a href="#banners" class="btn btn-secondary">View Banners</a>
+    </div>
 
     <div class="timer">
-      FREE ACCESS EXPIRES IN
-      <span id="countdown">00:16</span>
+      ⏱ Free access expires in <strong id="countdown">00:16</strong>
     </div>
-
-    <div class="features">
-      <div>PREMIUM<br>ACCESS</div>
-      <div>SECURE<br>DOWNLOAD</div>
-      <div>FAST<br>ACCESS</div>
-    </div>
-
-    <!-- DOWNLOAD BUTTON — will point to your APK -->
-    <a href="https://github.com/recovery200013-hub/zetagamer/releases/download/v1.0/zeta-number.apk" download class="btn">DOWNLOAD NOW</a>
-
-    <div class="small">50K+ USERS • 24/7 SUPPORT • 100% SECURE</div>
   </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<div class="container">
+  <div class="stats">
+    <div class="stat"><div class="stat-num">50K+</div><div class="stat-label">Users</div></div>
+    <div class="stat"><div class="stat-num">24/7</div><div class="stat-label">Support</div></div>
+    <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Secure</div></div>
+    <div class="stat"><div class="stat-num">4.9★</div><div class="stat-label">Rating</div></div>
+  </div>
+</div>
+
+<!-- ============ BANNERS ============ -->
+<section class="section" id="banners">
+  <div class="container">
+    <div class="section-head">
+      <h2>Explore <span>Zeta Number</span></h2>
+      <p>A glimpse into the premium experience waiting for you.</p>
+    </div>
+    <div class="banners-grid">
+      <div class="banner-card">
+        <img src="banner1.png" alt="Banner 1" loading="lazy">
+        <span class="banner-label">Premium UI</span>
+      </div>
+      <div class="banner-card">
+        <img src="banner2.png" alt="Banner 2" loading="lazy">
+        <span class="banner-label">Fast Access</span>
+      </div>
+      <div class="banner-card">
+        <img src="banner3.png" alt="Banner 3" loading="lazy">
+        <span class="banner-label">Secure</span>
+      </div>
+      <div class="banner-card">
+        <img src="banner4.png" alt="Banner 4" loading="lazy">
+        <span class="banner-label">VIP Panel</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURES ============ -->
+<section class="section" id="features">
+  <div class="container">
+    <div class="section-head">
+      <h2>Why <span>Zeta Number?</span></h2>
+      <p>Built for speed, privacy, and reliability.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature">
+        <div class="feature-icon">⚡</div>
+        <h3>Lightning Fast</h3>
+        <p>Instant response with zero lag. Optimized for performance on any device.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🔒</div>
+        <h3>100% Secure</h3>
+        <p>Your data stays private. No tracking, no logging, no third parties.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">👑</div>
+        <h3>Premium Features</h3>
+        <p>Unlock VIP tools that were previously reserved for paid members.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">📱</div>
+        <h3>Works Anywhere</h3>
+        <p>Compatible with all modern Android devices. Small APK, big power.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="container" id="download">
+  <div class="final-cta">
+    <h2>Ready to Unlock VIP Access?</h2>
+    <p>Download Zeta Number now — completely free for a limited time only.</p>
+    <a href="https://github.com/recovery20013-hub/zetagamer/releases/download/v1.0/zeta-number.apk"
+       class="btn btn-primary">
+      ⬇ Download Free APK
+    </a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    © 2026 Zeta Number · Made with 💚 · 
+    <a href="https://github.com/recovery20013-hub/zetagamer">GitHub</a>
+  </div>
+</footer>
 
 <script>
   // Countdown timer
@@ -117,10 +562,12 @@
   const el = document.getElementById('countdown');
   const timer = setInterval(() => {
     time--;
-    const m = String(Math.floor(time / 60)).padStart(2, '0');
-    const s = String(time % 60).padStart(2, '0');
-    el.textContent = `${m}:${s}`;
-    if (time <= 0) { clearInterval(timer); el.textContent = "EXPIRED"; }
+    const s = String(time).padStart(2, '0');
+    el.textContent = `00:${s}`;
+    if (time <= 0) {
+      clearInterval(timer);
+      el.textContent = "EXPIRED";
+    }
   }, 1000);
 </script>
 </body>
